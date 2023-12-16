@@ -1,0 +1,41 @@
+{
+  "name": "pc-crits-be",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "repository": "https://github.com/juliusL03/pc-crits-be.git",
+  "author": "julius-ph <71057113+juliusL03@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node -r dotenv/config ./app/index.js",
+    "start:dev": "nodemon --experimental-specifier-resolution=node --legacy-watch --trace-warnings -r dotenv/config ./app/index.js",
+    "setup:docker": "export $(grep -v '^#' .env | xargs)} && docker compose up -d --build && unset $(grep -v '^#' .env | awk 'BEGIN { FS = \"=\" } ; { print $1 }')",
+    "setup:docker:test": "export $(grep -v '^#' .env.test | xargs)} && docker compose up -d --build && unset $(grep -v '^#' .env.test | awk 'BEGIN { FS = \"=\" } ; { print $1 }')",
+    "destroy:docker": "docker compose down --rmi local --volumes"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-ip": "^1.0.4",
+    "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
+    "i18next": "^23.7.6",
+    "i18next-fs-backend": "^2.3.0",
+    "joi": "^17.11.0",
+    "json-joi-converter": "^17.11.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "mongoose": "^8.0.0",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
